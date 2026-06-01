@@ -264,6 +264,28 @@ export const games: Game[] = [
     ],
     tools: [],
   },
+  {
+    slug: 'rummy',
+    name: 'Rummy',
+    category: 'Card',
+    players: '2-6',
+    duration: '30-60 min',
+    description: 'A classic matching card game where players draw and discard to form sets of three or more cards of the same rank or sequential runs of the same suit.',
+    quickRef: [
+      'Draw one card from the stock or discard pile on your turn',
+      'Meld sets (3+ same rank) or runs (3+ consecutive same suit) to the table',
+      'Lay off cards onto existing melds on the table',
+      'Discard one card face-up to end your turn',
+      'First player to empty their hand wins; others score penalty points for remaining cards'
+    ],
+    rules: [
+      { title: 'Setup & Deal', body: 'Use a standard 52-card deck. Deal 10 cards each for 2 players, 7 cards each for 3-4 players, and 6 cards each for 5-6 players. Place the remaining cards face-down as the stock pile and flip the top card to start the discard pile.' },
+      { title: 'Turn Structure', body: 'On your turn, begin by drawing the top card from either the stock pile or the discard pile. You may then meld valid sets or runs face-up on the table, and lay off single cards onto any existing melds. End your turn by discarding one card face-up onto the discard pile.' },
+      { title: 'Melds & Laying Off', body: 'A valid set is three or four cards of the same rank (e.g., three 7s). A valid run is three or more consecutive cards of the same suit (e.g., 4-5-6 of hearts). Once a meld is on the table, any player may lay off additional matching cards onto it on their subsequent turns.' },
+      { title: 'Winning & Scoring', body: 'A player wins the round by melding or laying off all cards in their hand, going out with or without a final discard. All other players count the value of cards remaining in their hands — face cards are worth 10 points, Aces are worth 1 point, and number cards are worth face value. The player with the lowest cumulative score after an agreed number of rounds wins.' }
+    ],
+    tools: [],
+  },
 ]
 
 export function getGame(slug: string): Game | undefined {
