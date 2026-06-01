@@ -242,6 +242,28 @@ export const games: Game[] = [
     ],
     tools: ['dice', 'timer'],
   },
+  {
+    slug: 'omaha-poker',
+    name: 'Omaha Poker',
+    category: 'Card',
+    players: '2-10',
+    duration: '30-90 min',
+    description: 'A community card poker variant where each player is dealt four hole cards and must use exactly two of them combined with exactly three community cards to make the best five-card hand.',
+    quickRef: [
+      'Each player receives exactly 4 hole cards (not 2 like Texas Hold\'em)',
+      'You MUST use exactly 2 hole cards and exactly 3 community cards',
+      'Five community cards are dealt in three rounds: Flop (3), Turn (1), River (1)',
+      'Betting rounds occur pre-flop, post-flop, post-turn, and post-river',
+      'Best five-card hand wins; standard poker hand rankings apply'
+    ],
+    rules: [
+      { title: 'Setup & Deal', body: 'A standard 52-card deck is used with a dealer button, small blind, and big blind posted before the deal. Each player is dealt four private hole cards face down, one at a time. The player to the left of the big blind acts first in the pre-flop betting round.' },
+      { title: 'Community Cards & Betting Rounds', body: 'After pre-flop betting, three community cards (the Flop) are dealt face up, followed by a betting round. A fourth card (the Turn) is then revealed with another betting round, and finally a fifth card (the River) is revealed for the last betting round. Players may check, call, raise, or fold during each round.' },
+      { title: 'The Mandatory Hand Rule', body: 'Unlike Texas Hold\'em, players in Omaha must use exactly two of their four hole cards and exactly three of the five community cards to form their hand — no more, no less. This rule is strict and cannot be circumvented even if using fewer or more cards from either source would make a better hand.' },
+      { title: 'Showdown & Winning', body: 'If two or more players remain after the final betting round, a showdown occurs where all active players reveal their hands. The player who can construct the highest-ranking five-card hand using exactly 2 hole cards and 3 community cards wins the pot. In the case of a tie, the pot is split equally between the tied players.' }
+    ],
+    tools: [],
+  },
 ]
 
 export function getGame(slug: string): Game | undefined {
