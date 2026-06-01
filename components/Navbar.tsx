@@ -2,12 +2,13 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Dices, Timer, Trophy } from 'lucide-react'
+import { Dices, Timer, Trophy, Lightbulb } from 'lucide-react'
 
 const tools = [
-  { href: '/tools/dice',   label: 'Dice',   icon: Dices  },
-  { href: '/tools/timer',  label: 'Timer',  icon: Timer  },
-  { href: '/tools/spades', label: 'Spades', icon: Trophy },
+  { href: '/tools/dice',   label: 'Dice',    icon: Dices     },
+  { href: '/tools/timer',  label: 'Timer',   icon: Timer     },
+  { href: '/tools/spades', label: 'Spades',  icon: Trophy    },
+  { href: '/suggest',      label: 'Suggest', icon: Lightbulb },
 ]
 
 export default function Navbar() {
