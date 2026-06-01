@@ -64,7 +64,7 @@ export default function SpadesPage() {
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 32 }}>
           <div>
             <div style={{ fontSize: 32, marginBottom: 8 }}>♠️</div>
-            <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.03em', color: '#111', margin: '0 0 6px' }}>Spades</h1>
+            <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.03em', color: '#0D2057', margin: '0 0 6px' }}>Spades</h1>
             <p style={{ color: 'var(--text-secondary)', fontSize: 14 }}>First to {target} points wins.</p>
           </div>
           <button onClick={reset} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', border: '1px solid var(--border)', borderRadius: 10, background: '#fff', fontSize: 13, fontWeight: 500, cursor: 'pointer', color: 'var(--text-secondary)' }}>
@@ -87,7 +87,7 @@ export default function SpadesPage() {
               <div style={{ padding: '20px 20px 24px' }}>
                 <input value={team.name} onChange={e => setTeams(prev => { const n: [Team, Team] = [{ ...prev[0] }, { ...prev[1] }]; n[i as 0 | 1].name = e.target.value; return n })}
                   style={{ fontSize: 14, fontWeight: 600, color: TEAM_COLORS[i], border: 'none', background: 'none', width: '100%', outline: 'none', padding: 0, marginBottom: 2, textTransform: 'uppercase', letterSpacing: '0.04em' }} />
-                <div style={{ fontSize: 52, fontWeight: 800, letterSpacing: '-0.04em', color: '#111', lineHeight: 1, margin: '8px 0 4px' }}>{team.score}</div>
+                <div style={{ fontSize: 52, fontWeight: 800, letterSpacing: '-0.04em', color: '#0D2057', lineHeight: 1, margin: '8px 0 4px' }}>{team.score}</div>
                 <div style={{ fontSize: 12, color: 'var(--text-tertiary)', marginBottom: 20, fontWeight: 500 }}>
                   {team.bags} bag{team.bags !== 1 ? 's' : ''}
                   {team.bags >= 7 && <span style={{ color: '#F97316', marginLeft: 4 }}>⚠️ close to penalty</span>}

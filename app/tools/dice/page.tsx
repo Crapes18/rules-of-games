@@ -42,7 +42,7 @@ export default function DicePage() {
       <div style={{ maxWidth: 560, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 40 }}>
           <div style={{ fontSize: 40, marginBottom: 12 }}>🎲</div>
-          <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.03em', color: '#111', margin: '0 0 8px' }}>Dice Roller</h1>
+          <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.03em', color: '#0D2057', margin: '0 0 8px' }}>Dice Roller</h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: 15 }}>Roll any combination of dice.</p>
         </div>
 
@@ -74,9 +74,9 @@ export default function DicePage() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-tertiary)', margin: 0 }}>Number of Dice</p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-              <button onClick={() => setCount(Math.max(1, count - 1))} style={{ width: 36, height: 36, borderRadius: 8, border: '1px solid var(--border)', background: '#fff', fontSize: 20, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#111', fontWeight: 300 }}>−</button>
+              <button onClick={() => setCount(Math.max(1, count - 1))} style={{ width: 36, height: 36, borderRadius: 8, border: '1px solid var(--border)', background: '#fff', fontSize: 20, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0D2057', fontWeight: 300 }}>−</button>
               <span style={{ fontSize: 24, fontWeight: 700, minWidth: 32, textAlign: 'center', color: c.text }}>{count}</span>
-              <button onClick={() => setCount(Math.min(10, count + 1))} style={{ width: 36, height: 36, borderRadius: 8, border: '1px solid var(--border)', background: '#fff', fontSize: 20, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#111', fontWeight: 300 }}>+</button>
+              <button onClick={() => setCount(Math.min(10, count + 1))} style={{ width: 36, height: 36, borderRadius: 8, border: '1px solid var(--border)', background: '#fff', fontSize: 20, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0D2057', fontWeight: 300 }}>+</button>
             </div>
           </div>
 

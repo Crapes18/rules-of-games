@@ -24,7 +24,7 @@ export default function Navbar() {
     }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 24px', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', color: isHome ? '#FFFFFF' : 'var(--text)' }}>
-          <div style={{ width: 28, height: 28, background: isHome ? 'rgba(255,255,255,0.2)' : '#111', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: 28, height: 28, background: isHome ? 'rgba(255,255,255,0.2)' : '#0D2057', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Dices size={16} color="#fff" />
           </div>
           <span style={{ fontWeight: 600, fontSize: 15, letterSpacing: '-0.02em' }}>Rules of Games</span>

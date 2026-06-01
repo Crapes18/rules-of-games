@@ -47,7 +47,7 @@ export default function TimerPage() {
     <div style={{ maxWidth: 1100, margin: '0 auto', padding: '48px 24px' }}>
       <div style={{ maxWidth: 400, margin: '0 auto', textAlign: 'center' }}>
         <div style={{ fontSize: 40, marginBottom: 12 }}>⏱️</div>
-        <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.03em', color: '#111', margin: '0 0 8px' }}>Timer</h1>
+        <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.03em', color: '#0D2057', margin: '0 0 8px' }}>Timer</h1>
         <p style={{ color: 'var(--text-secondary)', fontSize: 15, marginBottom: 40 }}>Countdown for timed turns and rounds.</p>
 
         <div style={{ background: isDone ? '#FFF0F0' : '#fff', border: `1px solid ${isDone ? '#C0392B' : 'var(--border)'}`, borderRadius: 24, padding: '40px 32px 32px', marginBottom: 16, transition: 'all 0.3s' }}>

@@ -44,7 +44,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
                 <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: s?.color }}>{game.category}</span>
               </div>
-              <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.03em', color: '#111', margin: '0 0 8px' }}>{game.name}</h1>
+              <h1 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.03em', color: '#0D2057', margin: '0 0 8px' }}>{game.name}</h1>
               <p style={{ color: '#555', margin: '0 0 12px', fontSize: 15, maxWidth: 560 }}>{game.description}</p>
               <div style={{ display: 'flex', gap: 20 }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: '#666' }}><Users size={14} />{game.players} players</span>
@@ -80,7 +80,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
           )}
 
           {/* Full rules */}
-          <h2 style={{ fontSize: 18, fontWeight: 700, letterSpacing: '-0.02em', color: '#111', margin: '0 0 20px' }}>Full Rules</h2>
+          <h2 style={{ fontSize: 18, fontWeight: 700, letterSpacing: '-0.02em', color: '#0D2057', margin: '0 0 20px' }}>Full Rules</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {game.rules.map((section, i) => (
               <div key={i} style={{ borderRadius: 12, border: '1px solid var(--border)', padding: '20px 22px', background: '#fff', marginBottom: 8 }}>
@@ -88,7 +88,7 @@ export default async function GamePage({ params }: { params: Promise<{ slug: str
                   <div style={{ width: 24, height: 24, borderRadius: 6, background: s?.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <span style={{ fontSize: 11, fontWeight: 700, color: s?.color }}>{i + 1}</span>
                   </div>
-                  <h3 style={{ fontSize: 14, fontWeight: 600, color: '#111', margin: 0 }}>{section.title}</h3>
+                  <h3 style={{ fontSize: 14, fontWeight: 600, color: '#0D2057', margin: 0 }}>{section.title}</h3>
                 </div>
                 <p style={{ margin: '0 0 0 34px', color: '#555', lineHeight: 1.7, fontSize: 14 }}>{section.body}</p>
               </div>

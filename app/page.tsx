@@ -24,7 +24,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <div style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a2e 50%, #111111 100%)', marginTop: -60, paddingTop: 60 }}>
+      <div style={{ background: 'linear-gradient(135deg, #0D1B4B 0%, #0A2463 50%, #0D1B4B 100%)', marginTop: -60, paddingTop: 60 }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '80px 24px 72px' }}>
           <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
             {Object.entries(CATEGORY_STYLE).map(([cat, s]) => (
@@ -108,7 +108,7 @@ export default function HomePage() {
                           {game.category}
                         </span>
                       </div>
-                      <h2 style={{ fontSize: 17, fontWeight: 600, color: '#111', margin: '0 0 6px', letterSpacing: '-0.01em' }}>{game.name}</h2>
+                      <h2 style={{ fontSize: 17, fontWeight: 600, color: '#0D2057', margin: '0 0 6px', letterSpacing: '-0.01em' }}>{game.name}</h2>
                       <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: '0 0 16px', lineHeight: 1.55 }}>{game.description}</p>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                         <div style={{ display: 'flex', gap: 14 }}>
