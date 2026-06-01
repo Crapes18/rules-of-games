@@ -2,20 +2,14 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Search, Dices, Clock, Users, ChevronRight } from 'lucide-react'
+import { Search, Clock, Users, ArrowRight } from 'lucide-react'
 import { games, categories } from '@/lib/games'
 
-const categoryColors: Record<string, string> = {
-  Card: '#EEF4FD',
-  Dice: '#EDF7F1',
-  Board: '#FDF6EC',
-  Strategy: '#F2F1EE',
-}
-const categoryText: Record<string, string> = {
-  Card: '#2B6CB0',
-  Dice: '#2D7D52',
-  Board: '#B87D2A',
-  Strategy: '#6B6B6B',
+const CATEGORY_STYLE: Record<string, { color: string; bg: string; emoji: string }> = {
+  Card:     { color: '#DC4D00', bg: '#FFF5F0', emoji: '🃏' },
+  Dice:     { color: '#0066CC', bg: '#EEF6FF', emoji: '🎲' },
+  Board:    { color: '#16803C', bg: '#EDFAF3', emoji: '🎯' },
+  Strategy: { color: '#7C3AED', bg: '#F5F0FF', emoji: '♟️' },
 }
 
 export default function HomePage() {
@@ -23,61 +17,114 @@ export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
 
   const filtered = games.filter(g => {
-    const matchSearch = g.name.toLowerCase().includes(search.toLowerCase()) || g.description.toLowerCase().includes(search.toLowerCase())
-    const matchCat = !activeCategory || g.category === activeCategory
-    return matchSearch && matchCat
+    const matchSearch = !search || g.name.toLowerCase().includes(search.toLowerCase()) || g.description.toLowerCase().includes(search.toLowerCase())
+    return matchSearch && (!activeCategory || g.category === activeCategory)
   })
 
   return (
-    <div>
-      <div style={{ marginBottom: 32 }}>
-        <h1 style={{ fontSize: 28, fontWeight: 500, letterSpacing: '-0.02em', margin: '0 0 8px' }}>Game Rules</h1>
-        <p style={{ color: 'var(--text-secondary)', margin: 0 }}>Rules, quick references, and tools for every game night.</p>
+    <>
+      {/* Hero */}
+      <div style={{ background: 'linear-gradient(135deg, #111111 0%, #1a1a2e 50%, #111111 100%)', marginTop: -60, paddingTop: 60 }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '80px 24px 72px' }}>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+            {Object.entries(CATEGORY_STYLE).map(([cat, s]) => (
+              <span key={cat} style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.06em', padding: '4px 10px', borderRadius: 99, background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase' }}>
+                {s.emoji} {cat}
+              </span>
+            ))}
+          </div>
+          <h1 style={{ fontSize: 52, fontWeight: 700, color: '#FFFFFF', letterSpacing: '-0.04em', lineHeight: 1.1, marginBottom: 16, maxWidth: 600 }}>
+            Know every rule.<br />Win every game.
+          </h1>
+          <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.6)', marginBottom: 40, maxWidth: 480 }}>
+            Quick references, full rules, and interactive tools for {games.length} games — all in one place.
+          </p>
+
+          {/* Search */}
+          <div style={{ position: 'relative', maxWidth: 480 }}>
+            <Search size={16} style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.4)' }} />
+            <input
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder="Search games…"
+              style={{ width: '100%', padding: '14px 16px 14px 44px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 12, fontSize: 15, color: '#FFFFFF', outline: 'none', backdropFilter: 'blur(8px)' }}
+            />
+          </div>
+        </div>
       </div>
 
-      <div style={{ display: 'flex', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
-        <div style={{ position: 'relative', flex: 1, minWidth: 200 }}>
-          <Search size={14} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-tertiary)' }} />
-          <input
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder="Search games…"
-            style={{ width: '100%', paddingLeft: 36, paddingRight: 14, paddingTop: 10, paddingBottom: 10, background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 8, fontSize: 14, color: 'var(--text)', outline: 'none' }}
-          />
-        </div>
-        <div style={{ display: 'flex', gap: 4 }}>
-          <button onClick={() => setActiveCategory(null)} style={{ padding: '8px 14px', borderRadius: 8, border: '1px solid', borderColor: !activeCategory ? 'var(--text)' : 'transparent', background: !activeCategory ? 'var(--bg-tertiary)' : 'transparent', fontSize: 13, fontWeight: !activeCategory ? 500 : 400, color: !activeCategory ? 'var(--text)' : 'var(--text-secondary)', cursor: 'pointer' }}>All</button>
-          {categories.map(c => (
-            <button key={c} onClick={() => setActiveCategory(activeCategory === c ? null : c)} style={{ padding: '8px 14px', borderRadius: 8, border: '1px solid', borderColor: activeCategory === c ? 'var(--text)' : 'transparent', background: activeCategory === c ? 'var(--bg-tertiary)' : 'transparent', fontSize: 13, fontWeight: activeCategory === c ? 500 : 400, color: activeCategory === c ? 'var(--text)' : 'var(--text-secondary)', cursor: 'pointer' }}>{c}</button>
-          ))}
-        </div>
-      </div>
+      {/* Content */}
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '40px 24px' }}>
 
-      {filtered.length === 0 ? (
-        <p style={{ color: 'var(--text-tertiary)', textAlign: 'center', padding: '48px 0' }}>No games found.</p>
-      ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16 }}>
-          {filtered.map(game => (
-            <Link key={game.slug} href={`/games/${game.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-              <div style={{ background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: 12, padding: 20, cursor: 'pointer', transition: 'border-color 0.1s' }}
-                onMouseEnter={e => (e.currentTarget.style.borderColor = '#1A1A1A')}
-                onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border)')}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-                  <span style={{ fontSize: 11, fontWeight: 500, letterSpacing: '0.06em', textTransform: 'uppercase', padding: '2px 8px', borderRadius: 6, background: categoryColors[game.category] || '#F2F1EE', color: categoryText[game.category] || '#6B6B6B' }}>{game.category}</span>
-                  <ChevronRight size={14} color="var(--text-tertiary)" />
-                </div>
-                <h2 style={{ fontSize: 16, fontWeight: 500, margin: '0 0 6px', color: 'var(--text)' }}>{game.name}</h2>
-                <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: '0 0 14px', lineHeight: 1.5 }}>{game.description}</p>
-                <div style={{ display: 'flex', gap: 16 }}>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--text-tertiary)' }}><Users size={11} />{game.players}</span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--text-tertiary)' }}><Clock size={11} />{game.duration}</span>
-                  {game.tools.length > 0 && <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--text-tertiary)' }}><Dices size={11} />{game.tools.length} tool{game.tools.length > 1 ? 's' : ''}</span>}
-                </div>
-              </div>
-            </Link>
-          ))}
+        {/* Category filter */}
+        <div style={{ display: 'flex', gap: 8, marginBottom: 32, flexWrap: 'wrap' }}>
+          <button
+            onClick={() => setActiveCategory(null)}
+            style={{ padding: '8px 18px', borderRadius: 99, border: '1px solid', borderColor: !activeCategory ? '#111' : 'var(--border)', background: !activeCategory ? '#111' : 'transparent', color: !activeCategory ? '#fff' : 'var(--text-secondary)', fontSize: 13, fontWeight: 500, cursor: 'pointer' }}>
+            All Games
+          </button>
+          {categories.map(cat => {
+            const s = CATEGORY_STYLE[cat]
+            const active = activeCategory === cat
+            return (
+              <button key={cat} onClick={() => setActiveCategory(active ? null : cat)} style={{
+                padding: '8px 18px', borderRadius: 99, border: '1px solid',
+                borderColor: active ? s?.color : 'var(--border)',
+                background: active ? s?.bg : 'transparent',
+                color: active ? s?.color : 'var(--text-secondary)',
+                fontSize: 13, fontWeight: active ? 600 : 400, cursor: 'pointer',
+              }}>
+                {s?.emoji} {cat}
+              </button>
+            )
+          })}
         </div>
-      )}
-    </div>
+
+        {filtered.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '64px 0', color: 'var(--text-tertiary)' }}>
+            <div style={{ fontSize: 32, marginBottom: 12 }}>🔍</div>
+            <p>No games found for &ldquo;{search}&rdquo;</p>
+          </div>
+        ) : (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 16 }}>
+            {filtered.map(game => {
+              const s = CATEGORY_STYLE[game.category]
+              return (
+                <Link key={game.slug} href={`/games/${game.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
+                  <div
+                    className="fade-in"
+                    style={{ background: '#FFFFFF', border: '1px solid var(--border)', borderRadius: 16, overflow: 'hidden', cursor: 'pointer', transition: 'transform 0.15s, box-shadow 0.15s', height: '100%' }}
+                    onMouseEnter={e => { Object.assign((e.currentTarget as HTMLElement).style, { transform: 'translateY(-3px)', boxShadow: '0 12px 32px rgba(0,0,0,0.08)' }) }}
+                    onMouseLeave={e => { Object.assign((e.currentTarget as HTMLElement).style, { transform: 'translateY(0)', boxShadow: 'none' }) }}
+                  >
+                    {/* Card header with category color */}
+                    <div style={{ height: 6, background: s?.color ?? '#111' }} />
+                    <div style={{ padding: '18px 20px 20px' }}>
+                      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 10 }}>
+                        <div style={{ width: 40, height: 40, borderRadius: 10, background: s?.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>
+                          {s?.emoji}
+                        </div>
+                        <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: s?.color, padding: '3px 8px', borderRadius: 6, background: s?.bg }}>
+                          {game.category}
+                        </span>
+                      </div>
+                      <h2 style={{ fontSize: 17, fontWeight: 600, color: '#111', margin: '0 0 6px', letterSpacing: '-0.01em' }}>{game.name}</h2>
+                      <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: '0 0 16px', lineHeight: 1.55 }}>{game.description}</p>
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <div style={{ display: 'flex', gap: 14 }}>
+                          <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--text-tertiary)' }}><Users size={11} />{game.players}</span>
+                          <span style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--text-tertiary)' }}><Clock size={11} />{game.duration}</span>
+                        </div>
+                        <ArrowRight size={14} color="var(--text-tertiary)" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        )}
+      </div>
+    </>
   )
 }
